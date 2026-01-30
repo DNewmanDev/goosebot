@@ -1,5 +1,5 @@
 from functions.get_files_info import get_files_info
-
+from functions.get_file_contents import get_file_content
 def main():
     print("Result for current directory:")
     print(get_files_info("calculator", "."))
