@@ -23,10 +23,13 @@ def main():
     ) #call the generate_content and assign to response
     if response.usage_metadata is None:
         raise RuntimeError("No metadata found in response, likely a failed API request")
-    print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
-    print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
+    if args.verbose:
+        print(f"User prompt: {args.user_prompt}")
+        print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
+        print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
+        
     print(response.text)
-
+   
 
 if __name__ == "__main__":
     main()
