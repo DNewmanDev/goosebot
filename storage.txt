@@ -1,0 +1,37 @@
+  if hasattr(call_check, "function_call"):
+        function_responses = []
+        for part in response.candidates[0].content.parts:
+            if hasattr(part, "function_call"):
+                function_name = part.function_call
+                print(f"Calling function: {function_name.name}({function_name.args})")
+
+                if function_name == "get_file_content":
+
+                    result = get_file_content(
+                        "calculator", function_name.args["file_path"]
+                    )
+                    print(result)
+                elif function_name.name == "get_files_info":
+
+                    result = get_files_info(
+                        "calculator", function_name.args["directory"]
+                    )
+                    print(result)
+                elif function_name.name == "write_file":
+
+                    result = write_file(
+                        "calculator",
+                        function_name.args["file_path"],
+                        function_name.args["content"],
+                    )
+                    print(result)
+
+                elif function_name.name == "run_python_file":
+
+                    args_list = function_name.args.get("args", None)
+                    result = run_python_file(
+                        "calculator", function_name.args["file_path"], args_list
+                    )
+                    print(result)
+                else:
+                    result = f"Error: Unknown function {function_name.name}"
