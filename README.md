@@ -80,6 +80,8 @@ uv sync
 python3 main.py "your prompt describing the broken code" --verbose
 ```
 ## 🏗️ Project Structure
+
+```
 goosebot/
 ├── main.py               # Agent loop, CLI entry point
 ├── functions_list.py     # Tool definitions and function dispatch
@@ -92,3 +94,4 @@ goosebot/
 ├── test_write_file.py
 ├── pyproject.toml
 └── uv.lock
+```
